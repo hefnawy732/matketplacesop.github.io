@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support and marketplace SOP</title>
+    <style>
+        body {
+            background-color: #dedede;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .ag-format-container {
+            width: 1142px;
+            margin: 0 auto;
+        }
+        .ag-courses_box {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 50px 0;
+        }
+        .ag-courses_item {
+            flex-basis: calc(33.33333% - 30px);
+            margin: 0 15px 30px;
+            overflow: hidden;
+            border-radius: 28px;
+        }
+        .ag-courses-item_link {
+            display: block;
+            padding: 30px 20px;
+            background-color: #002401;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none; /* Add this line to remove the underline */
+
+        }
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+            text-decoration: none;
+            color: #FFF;
+        }
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+            transform: scale(10);
+        }
+        .ag-courses-item_title {
+            min-height: 87px;
+            margin: 0 0 25px;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: 30px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date-box {
+            font-size: 18px;
+            color: #FFF;
+            z-index: 2;
+            position: relative;
+        }
+        .ag-courses-item_date {
+            font-weight: bold;
+            color: #18b83b;
+            transition: color .5s ease;
+        }
+        .ag-courses-item_bg {
+            height: 128px;
+            width: 128px;
+            background-color: #09a32a;
+            z-index: 1;
+            position: absolute;
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+            transition: all .5s ease;
+        }
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+            background-color: #09a32a;
+        }
+        @media only screen and (max-width: 979px) {
+            .ag-courses_item {
+                flex-basis: calc(50% - 30px);
+            }
+            .ag-courses-item_title {
+                font-size: 24px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .ag-format-container {
+                width: 96%;
+            }
+        }
+        @media only screen and (max-width: 639px) {
+            .ag-courses_item {
+                flex-basis: 100%;
+            }
+            .ag-courses-item_title {
+                min-height: 72px;
+                line-height: 1;
+                font-size: 24px;
+            }
+            .ag-courses-item_link {
+                padding: 22px 40px;
+            }
+            .ag-courses-item_date-box {
+                font-size: 16px;
+            }
+        }
+        img.img-fluid {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin: 10px; /* Optional: Adds some space from the edges */
+    max-width: 220px; /* Optional: Sets a maximum width to ensure it doesn't occupy too much space */
+
+
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed positioning */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    overflow: hidden; /* Prevent scrolling of the modal background */
+}
+
+.modal-content {
+    background-color: #ffffff; /* Dark background for the modal */
+    margin: auto; /* Center the modal */
+    padding: 20px;
+    width: 80%; /* Width of the modal */
+    max-width: 600px; /* Maximum width for larger screens */
+    border-radius: 10px;
+    color: rgb(0, 0, 0); /* Set text color to black */
+    position: relative; /* Ensure position context for centering */
+    top: 50%; /* Move down 50% of the viewport height */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+    max-height: 80vh; /* Maximum height of the modal */
+    overflow-y: auto; /* Enable vertical scrolling for the content */
+}
+
+/* Custom scrollbar styles */
+.modal-content::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Track color */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #898989; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #000000; /* Darker shade on hover */
+}
+
+.close-button {
+    color: #aaa; /* Color for close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: rgb(109, 106, 106); /* Change close button color on hover */
+    text-decoration: none;
+}
+body.no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+}
+    </style>
+</head>
+<body>
+    <img src="test/Icone.png" class="img-fluid" alt="...">
+
+    <div class="ag-format-container">
+        <div class="ag-courses_box">
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title"> Purpose </div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Scope</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Work Schedule</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Responsibilities</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Definitions</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Communication and Escalation Channels</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Escalation Cases between CS and Marketplace Team</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Missing Item Procedure for Partial Dedicated Stores</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Conclusion</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+            <div class="ag-courses_item">
+                <a href="#" class="ag-courses-item_link">
+                    <div class="ag-courses-item_bg"></div>
+                    <div class="ag-courses-item_title">Version Control</div>
+                    <div class="ag-courses-item_date-box">
+                        Updated at: <span class="ag-courses-item_date">September  2024</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="contentText"></div>
+        </div>
+    </div>
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("modal");
+    const closeButton = document.querySelector(".close-button");
+    const contentText = document.getElementById("contentText");
+
+    const cardContent = {
+        "Purpose":    `  <h1>Purpose</h1>
+<p>To outline the procedures for escalating customer-related issues from the Customer Support (CS) team to the Marketplace (MP) Department, ensuring quick resolutions for problems arising from both Partial Dedicated Stores and Non-Dedicated Stores.</p>
+`,
+        "Scope": `<h1>Scope</h1>
+<p>This SOP applies to all Customer Support Agents handling escalations concerning stores managed by the Marketplace Department, specifically Partial Dedicated Stores and Non-Dedicated Stores.</p>
+`,
+        "Work Schedule":`   <h1>Work Schedule</h1>
+<ul>
+    <li>Working Hours: 9 hours per day with one day off per week.</li>
+    <li>Breaks: 1 hour break divided into two 30-minute breaks.</li>
+    <li>Salary: Hourly based, $2.2 per hour.</li>
+</ul>
+`,
+        "Responsibilities": `<h1>Responsibilities</h1>
+<ul>
+    <li>Customer Support Agents (CSRs): Address customer issues, verify order status, and escalate unresolved cases to the Marketplace team.</li>
+    <li>Marketplace Team: Responsible for managing pickers in Partial Dedicated Stores and overseeing both picking and delivery for Non-Dedicated Stores.</li>
+</ul>
+`,
+        "Definitions": `<h1>Definitions</h1>
+<ul>
+    <li>Partial Dedicated Stores: Stores where picking is managed by in-store pickers, but delivery is managed by the company.</li>
+    <li>Non-Dedicated Stores: Stores responsible for both picking and delivering orders independently.</li>
+</ul>
+`,
+        "Communication and Escalation Channels": ` <h1>Communication and Escalation Channels</h1>
+<ul>
+    <li>Slack Channel: <strong>ops-excellence-cs-mp-logs</strong></li>
+    <li>Head of Department: Fayiz Vajuhudeen, Head of Marketplace Operations.</li>
+    <li>Escalation Procedure: Escalations to the Business Development Executives (BDEs) are made when the store does not respond or resolve issues.</li>
+</ul>
+
+`,
+        "Escalation Cases between CS and Marketplace Team":`<h1>Escalation Cases between CS and Marketplace Team</h1>
+
+<ol>
+    <li>No Response Cases
+        <ul>
+            <li><strong>Situation:</strong> When CS does not receive a timely response from the store regarding an order or issue.</li>
+            <li><strong>Action:</strong> Escalate to the Marketplace Department via <strong>ops-excellence-cs-mp-logs</strong> to engage the Business Development Executives (BDEs), who will liaise with store management.</li>
+        </ul>
+    </li>
+    <li>Device Malfunctioning
+        <ul>
+            <li><strong>Situation:</strong> Store devices are malfunctioning or not processing orders correctly.</li>
+            <li><strong>Action:</strong> Raise the issue with the Marketplace Department to troubleshoot device or system issues and coordinate with tech support.</li>
+        </ul>
+    </li>
+    <li>Missing Numbers on Dashboard (DB)
+        <ul>
+            <li><strong>Situation:</strong> The CS team or store is unable to process the order due to missing or incorrect numbers on the dashboard.</li>
+            <li><strong>Action:</strong> Escalate to the Marketplace Department for further investigation and to correct the information on the system.</li>
+        </ul>
+    </li>
+    <li>Store Picker Doesn’t Know How to Process the Order
+        <ul>
+            <li><strong>Situation:</strong> Store picker lacks knowledge or is unable to properly process the order.</li>
+            <li><strong>Action:</strong> Escalate to the Marketplace Department to provide necessary training or instructions to the picker on processing the order.</li>
+        </ul>
+    </li>
+    <li>Acceptance Errors (Tech Issues)
+        <ul>
+            <li><strong>Situation:</strong> Orders are not being accepted by the store due to technical issues, leading to order delays.</li>
+            <li><strong>Action:</strong> Raise an escalation to the Marketplace Department to check the acceptance system and resolve the technical glitch.</li>
+        </ul>
+    </li>
+</ol>
+`, "Missing Item Procedure for Partial Dedicated Stores": `<h1>Missing Item Procedure for Partial Dedicated Stores</h1>
+<ol>
+    <li>Verify with the Dispatch Team if the driver has the missing item.</li>
+    <li>Simultaneously, ask the picker in the store to check whether the missing item is still in-store.</li>
+    <li>If both the picker and the driver confirm that the item is not with them:
+        <ul>
+            <li>Escalate the case to CS-Approvals on Slack.</li>
+            <li>The SPOC will coordinate with the Marketplace team to check with store management and confirm the missing item’s status.</li>
+        </ul>
+    </li>
+</ol>
+`,
+"Conclusion": `<h1>Conclusion</h1>
+<p>This SOP ensures that all escalations between the Customer Support team and the Marketplace Department follow a structured process to minimize delays and improve customer satisfaction. Timely communication between teams is key to resolving issues related to missing items, device malfunctions, and order processing errors.</p>
+`,
+"Version Control": `<h1>Version Control</h1>
+<ul>
+    <li>Version: 1.1</li>
+    <li>Last Updated: September 2024</li>
+    <li>Next Review: January 2025</li>
+    <li>Reviewed by: Customer Support & Logistics Managers</li>
+</ul>`
+    };
+
+    document.querySelectorAll('.ag-courses_item').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+            const title = this.querySelector('.ag-courses-item_title').textContent.trim();
+            contentText.innerHTML = cardContent[title]; // Set the content HTML
+            modal.style.display = "block"; // Show the modal
+            document.body.classList.add('no-scroll'); // Add class to prevent body scrolling
+
+        });
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = "none"; // Hide the modal
+        document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Hide the modal if outside of it is clicked
+            document.body.classList.remove('no-scroll'); // Remove class to allow scrolling again
+
+        }
+    });
+});
+    </script>
+</body>
+</html>
